@@ -60,6 +60,15 @@ class Helpers {
         }
         return targetElement;
     }
+    getManagerStrings(element: WebdriverIO.Element) {
+        return $(element.selector).getText().split("\n");
+    }
+    getManagerName(element: WebdriverIO.Element) {
+        return this.getManagerStrings(element)[0];
+    }
+    getManagerTitle(element: WebdriverIO.Element) {
+        return this.getManagerStrings(element)[1];
+    }
 }
 
 export default new Helpers();
