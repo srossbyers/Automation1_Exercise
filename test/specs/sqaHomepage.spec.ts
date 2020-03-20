@@ -1,9 +1,10 @@
 import {expect} from 'chai';
 import Homepage from 'src/pages/SQA/Homepage';
-//import request from 'sync-request';
+import Helpers from 'src/utilities/Helpers';
 
-describe('Shasta QA homepage', () => {
+describe('Shasta QA ' + (browser.config as any).view + ' homepage', () => {
     it('loads successfully', () => {
+        Helpers.resizeWindow();
         browser.url('');
         expect(Homepage.sqaLogo.isDisplayed()).to.be.true;
     });
