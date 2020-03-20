@@ -1,5 +1,8 @@
 class Helpers {
     highlight(webElement: WebdriverIO.Element, color = 'green') {
+        if (!webElement.isDisplayedInViewport()) {
+            webElement.scrollIntoView();
+        }
         try {
             let originalBorder = webElement.getCSSProperty('border');
 
