@@ -1,6 +1,13 @@
-const timeout = process.env.DEBUG ? 99999999 : 30000;
+const timeout = process.env.DEBUG ? 99999999 : 60000;
 
 exports.config = {
+    //
+    // =======================
+    // Browser View Under Test
+    // =======================
+    //
+    // The browser view (desktop, mobile, tablet) to be tested.
+    view: 'desktop',
     //
     // ====================
     // Runner Configuration
@@ -9,7 +16,6 @@ exports.config = {
     // WebdriverIO allows it to run your tests in arbitrary locations (e.g. locally or
     // on a remote machine).
     runner: 'local',
-
     //
     // ==================
     // Specify Test Files
@@ -20,10 +26,9 @@ exports.config = {
     // directory is where your package.json resides, so `wdio` will be called from there.
     //
     specs: [
-      // './test/**/*.ts'
-      './test/specs/**/*.ts'
-    ],
-    suites: [
+      // './test/**/*.ts' // original boilerplate tests
+      // './test/specs/**/*.ts' // sqa homepage tests
+      './test/specs/debug/**/*.ts' // debug tests
     ],
     // Patterns to exclude.
     exclude: [
@@ -80,7 +85,6 @@ exports.config = {
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
     baseUrl: 'http://www.shastaqa.com',
-    // baseUrl: 'http://www.nonexistentpage.com',
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
@@ -238,4 +242,4 @@ exports.config = {
      */
     // onComplete: function(exitCode, config, capabilities, results) {
     // }
-}
+};
