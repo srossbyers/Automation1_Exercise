@@ -1,5 +1,3 @@
-import Helpers from "src/utilities/Helpers";
-
 class DesktopContactPage {
     UI: DesktopContactPage_UI;
     constructor() {

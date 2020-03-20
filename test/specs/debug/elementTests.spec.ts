@@ -1,12 +1,15 @@
 import { expect } from 'chai';
 import DesktopHomepage from 'src/pages/SQA/DesktopHomepage';
 import DesktopContactPage from 'src/pages/SQA/DesktopContactpage';
+import DesktopManagementPage from 'src/pages/SQA/DesktopManagementpage';
 import Helpers from 'src/utilities/Helpers';
 
 describe('All mapped ' + (browser.config as any).view + ' elements', () => {
     it('can be successfully highlighted', () => {
         Helpers.resizeWindow();
-        browser.url('/contact');
+        // browser.url('');
+        // browser.url('/contact');
+        browser.url('/about/management-team');
 
         // console.log("Highlighting all Header Elements");
         // DesktopHomepage.UI.Header.getAllElements().forEach(function(element) {
@@ -48,9 +51,22 @@ describe('All mapped ' + (browser.config as any).view + ' elements', () => {
         // Helpers.highlight(DesktopHomepage.UI.NavBar.About.teamLink);
         // Helpers.highlight(DesktopHomepage.UI.NavBar.About.careersLink);
 
-        console.log("Highlighting all Contact Page Elements");
-        DesktopContactPage.UI.Form.getAllElements().forEach(function(element) {
+        // console.log("Highlighting all Contact Page Elements");
+        // DesktopContactPage.UI.Form.getAllElements().forEach(function(element) {
+        //     Helpers.highlight(element);
+        // });
+
+        console.log("Highlighting all Management Page Elements");
+        DesktopManagementPage.getAllElements().forEach(function(element) {
             Helpers.highlight(element);
         });
+        console.log(Helpers.getManagerStrings(DesktopManagementPage.donSection));
+        console.log(Helpers.getManagerStrings(DesktopManagementPage.chrisSection));
+        console.log(Helpers.getManagerStrings(DesktopManagementPage.annaSection));
+        console.log(Helpers.getManagerStrings(DesktopManagementPage.christinaSection));
+        console.log(Helpers.getManagerStrings(DesktopManagementPage.bentonSection));
+        console.log(Helpers.getManagerStrings(DesktopManagementPage.jimSection));
+        console.log(Helpers.getManagerStrings(DesktopManagementPage.longmireSection));
+        console.log(Helpers.getManagerStrings(DesktopManagementPage.yukaSection));
     });
 });
