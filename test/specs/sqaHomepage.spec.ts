@@ -1,6 +1,7 @@
 import {expect} from 'chai';
 import DesktopHomepage from 'src/pages/SQA/DesktopHomepage';
 import Helpers from 'src/utilities/Helpers';
+import * as CONSTANTS from 'src/constants/CONSTANTS';
 
 before(function () {
     Helpers.resizeWindow();
@@ -8,44 +9,21 @@ before(function () {
 });
 describe('Shasta QA ' + (browser.config as any).view + ' homepage', () => {
     it('loads successfully', () => {
-        // Helpers.resizeWindow();
-        // browser.url('');
         expect(DesktopHomepage.UI.Header.sqaLogo.isDisplayed()).to.be.true;
     });
     it('header links open the expected pages', () => {
-        Helpers.tryClick(DesktopHomepage.UI.Header.consultationLink);
-        expect(browser.getUrl()).to.be.string('https://www.shastaqa.com/contact');
-        
-        Helpers.tryClick(DesktopHomepage.UI.Header.knowledgeCenterLink);
-        expect(browser.getUrl()).to.be.string('https://www.shastaqa.com/knowledge-center');
-
-        Helpers.tryClick(DesktopHomepage.UI.Header.socialMediaLink);
-        expect(browser.getUrl()).to.be.string('https://www.shastaqa.com/media');
-
-        Helpers.tryClick(DesktopHomepage.UI.Header.faqLink);
-        expect(browser.getUrl()).to.be.string('https://www.shastaqa.com/faqs');
-
-        Helpers.tryClick(DesktopHomepage.UI.Header.contactLink);
-        expect(browser.getUrl()).to.be.string('https://www.shastaqa.com/contact');
+        let elements = DesktopHomepage.UI.Header.getAllElements();
+        for (let i = 0; i < elements.length; i++) {
+            Helpers.tryClick(elements[i]);
+            expect(browser.getUrl()).to.be.string(CONSTANTS.HEADER_LINK_EXPECTS[i]);
+        }
     });
     it('nav bar links open the expected pages', () => {
-        Helpers.tryClick(DesktopHomepage.UI.NavBar.testingServicesLink);
-        expect(browser.getUrl()).to.be.string('https://www.shastaqa.com/desktop-application-testing');
-
-        Helpers.tryClick(DesktopHomepage.UI.NavBar.marketsLink);
-        expect(browser.getUrl()).to.be.string('https://www.shastaqa.com/market');
-        
-        Helpers.tryClick(DesktopHomepage.UI.NavBar.sqaProcessLink);
-        expect(browser.getUrl()).to.be.string('https://www.shastaqa.com/shasta-qa-process/needs-analysis');
-
-        Helpers.tryClick(DesktopHomepage.UI.NavBar.caseStudiesLink);
-        expect(browser.getUrl()).to.be.string('https://www.shastaqa.com/case-studies');
-
-        Helpers.tryClick(DesktopHomepage.UI.NavBar.aboutLink);
-        expect(browser.getUrl()).to.be.string('https://www.shastaqa.com/about');
-
-        Helpers.tryClick(DesktopHomepage.UI.NavBar.searchLink);
-        expect(browser.getUrl()).to.be.string('https://www.shastaqa.com/search?q=');
+        let elements = DesktopHomepage.UI.NavBar.getAllElements();
+        for (let i = 0; i < elements.length; i++) {
+            Helpers.tryClick(elements[i]);
+            expect(browser.getUrl()).to.be.string(CONSTANTS.NAVBAR_LINK_EXPECTS[i]);
+        }
     });
     it('Testing Services dropdown links open the expected pages', () => {
         Helpers.tryClick(DesktopHomepage.UI.NavBar.TestingServices.desktopApplicationTestingLink);
