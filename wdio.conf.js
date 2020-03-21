@@ -27,8 +27,7 @@ exports.config = {
     //
     specs: [
       // './test/**/*.ts' // original boilerplate tests
-      // './test/specs/**/*.ts' // sqa homepage tests
-      './test/specs/debug/**/*.ts' // debug tests
+      './test/specs/*.ts' // sqa site tests
     ],
     // Patterns to exclude.
     exclude: [

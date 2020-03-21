@@ -5,6 +5,7 @@
   "repository": "https://github.com/srossbyers/Automation1_Exercise",
   "scripts": {
     "test": "wdio",
+    "test_elements": "wdio --spec=test/specs/debug/elementTests.spec.ts",
     "test_mobile": "wdio --view=mobile",
     "test_google": "wdio --baseUrl=http://google.com",
     "test_nothing": "wdio --baseUrl=http://nonexistentpage.com",

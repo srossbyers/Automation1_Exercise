@@ -146,7 +146,7 @@ class TestingServiceLinks {
 
 class MarketLinks {
     hoverElementSelector: string = '//a[@class="Header-nav-folder-title" and contains(text(), "Markets")]';
-    get marketsLinkNested() {
+    get marketsLink() {
         return Helpers.hoverToDisplay(
             '//a[@class="Header-nav-folder-item" and contains(text(), "Markets")]',
             this.hoverElementSelector);

@@ -1,18 +1,18 @@
 class Helpers {
-    highlight(webElement: WebdriverIO.Element, color = 'green') {
-        if (!webElement.isDisplayedInViewport()) {
-            webElement.scrollIntoView();
+    highlight(element: WebdriverIO.Element, color = 'green') {
+        if (!element.isDisplayedInViewport()) {
+            element.scrollIntoView();
         }
         try {
-            let originalBorder = webElement.getCSSProperty('border');
+            let originalBorder = element.getCSSProperty('border');
 
             browser.pause(500);
             browser.execute("arguments[0].style.border='3px solid " + color + "'",
-                webElement);
+                element);
             browser.pause(500);
 
             browser.execute(`arguments[0].style.border='${originalBorder.value}'`,
-                webElement);
+                element);
         }
         catch (error) {
             console.log(error.message);
@@ -47,18 +47,23 @@ class Helpers {
     }
     hoverToDisplay(targetElementSelector: string, hoverElementSelector: string) {
         let element: WebdriverIO.Element = $(targetElementSelector);
+        let hover: WebdriverIO.Element = $(hoverElementSelector);
         if (!element.isDisplayed()) {
-            $(hoverElementSelector).moveTo();
+            this.waitForElementToLoad(hover);
+            if (!hover.isDisplayedInViewport()) {
+                hover.scrollIntoView();
+            }
+            hover.moveTo();
             this.waitForElementToLoad(element);
         }
         return element;
     }
-    hoverDisplay(targetElement: WebdriverIO.Element, hoverElement: any) {
-        if (!targetElement.isDisplayed()) {
-            hoverElement.moveTo();
-            this.waitForElementToLoad(targetElement);
+    tryClick(target: WebdriverIO.Element) {
+        this.waitForElementToLoad(target);
+        if (!target.isDisplayedInViewport()) {
+            target.scrollIntoView();
         }
-        return targetElement;
+        target.click();
     }
     getManagerStrings(element: WebdriverIO.Element) {
         return $(element.selector).getText().split("\n");
@@ -70,5 +75,4 @@ class Helpers {
         return this.getManagerStrings(element)[1];
     }
 }
-
 export default new Helpers();
