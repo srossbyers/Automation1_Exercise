@@ -33,7 +33,7 @@ describe('All mapped ' + (browser.config as any).view + 'Homepage elements', () 
         Helpers.highlight(DesktopHomepage.UI.NavBar.TestingServices.regulatoryTestingLink);
         Helpers.highlight(DesktopHomepage.UI.NavBar.TestingServices.bugScrubbingLink);
 
-        Helpers.highlight(DesktopHomepage.UI.NavBar.Markets.marketsLinkNested);
+        Helpers.highlight(DesktopHomepage.UI.NavBar.Markets.marketsLink);
         Helpers.highlight(DesktopHomepage.UI.NavBar.Markets.techStartupsLink);
         Helpers.highlight(DesktopHomepage.UI.NavBar.Markets.regulatoryMedicalDevicesLink);
         Helpers.highlight(DesktopHomepage.UI.NavBar.Markets.ventureCapitalistsLink);

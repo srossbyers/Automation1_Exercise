@@ -33,11 +33,11 @@ class HomepageHeader {
     getAllElements() {
         this.allElements = [
             this.sqaLogo,
+            this.consultationLink,
             this.knowledgeCenterLink,
             this.socialMediaLink,
             this.faqLink,
-            this.contactLink,
-            this.consultationLink,
+            this.contactLink, 
         ]
         return this.allElements;
     }
