@@ -40,7 +40,8 @@ class Helpers {
             desktop();
         }
     }
-    waitForElementToLoad(element: WebdriverIO.Element, waitTime = 20000, errorMessage = 'ERROR: Element was not displayed') {
+    waitForElementToLoad(element: WebdriverIO.Element, waitTime = 20000, 
+                         errorMessage = 'ERROR: Element was not displayed') {
         if (!element.isDisplayed()) {
             element.waitForDisplayed(waitTime, false, errorMessage);
         }
@@ -73,6 +74,18 @@ class Helpers {
     }
     getManagerTitle(element: WebdriverIO.Element) {
         return this.getManagerStrings(element)[1];
+    }
+    valueCanBeModified(element: WebdriverIO.Element) {
+        if ((element.getTagName() == 'input' || element.getTagName() == 'textarea')
+            // don't try to modify the value of Sumbmit Button    
+            && element.getValue() != 'Submit'
+            // don't try to modify the value of Phone radio button
+            && element.getValue() != 'Phone'
+            // don't try to modify the value of Email radio button    
+            && element.getValue() != 'Email') { 
+            return true;
+        }
+        return false;
     }
 }
 export default new Helpers();
